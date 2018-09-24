@@ -1,0 +1,31 @@
+{
+    "name": "versatilecms/front",
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.0",
+        "spatie/laravel-sitemap": "~5.2.0",
+        "laravel/scout": "^5.0",
+        "teamtnt/laravel-scout-tntsearch-driver": "^3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Versatile\\Front\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Versatile\\Front\\Providers\\VersatileFrontendServiceProvider"
+            ],
+            "aliases": {
+                "VersatileFrontend": "Versatile\\Front\\Facade"
+            }
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@php artisan vendor:publish --provider=Laravel\\Scout\\ScoutServiceProvider",
+            "@php artisan vendor:publish --provider=Spatie\\Sitemap\\SitemapServiceProvider --tag=config"
+        ]
+    }
+}
