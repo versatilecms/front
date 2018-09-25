@@ -45,6 +45,26 @@ class VersatileFrontendServiceProvider extends ServiceProvider
         $this->mergeConfigFrom($this->packagePath . 'config/scout.php', 'scout');
 
         $this->app->alias(VersatileFrontend::class, 'versatile-frontend');
+
+        if ($this->app->runningInConsole()) {
+            $this->strapPublishers();
+        }
+    }
+
+    /**
+     * Register the publishable files.
+     */
+    private function strapPublishers()
+    {
+        $publishable = [
+            'config' => [
+                $this->packagePath . 'config/versatile-frontend.php' => config_path('versatile-frontend.php'),
+            ]
+        ];
+
+        foreach ($publishable as $group => $paths) {
+            $this->publishes($paths, $group);
+        }
     }
 
     /**
