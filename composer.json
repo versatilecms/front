@@ -1,6 +1,5 @@
 {
     "name": "versatilecms/front",
-    "minimum-stability": "dev",
     "require": {
         "php": ">=7.0",
         "spatie/laravel-sitemap": "~5.2.0",
@@ -27,5 +26,7 @@
             "@php artisan vendor:publish --provider=Laravel\\Scout\\ScoutServiceProvider",
             "@php artisan vendor:publish --provider=Spatie\\Sitemap\\SitemapServiceProvider --tag=config"
         ]
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
